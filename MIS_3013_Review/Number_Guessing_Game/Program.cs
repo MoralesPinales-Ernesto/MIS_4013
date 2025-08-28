@@ -23,15 +23,19 @@ do
 	{
 		if (guess > rando)
 		{
+			Console.ForegroundColor = ConsoleColor.Red;
 			Console.WriteLine("Sorry, you guessed too high");
+			Console.ForegroundColor = ConsoleColor.White;
 
 		}
 		else
 		{
+			Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Sorry, you guessed low");
+			Console.ForegroundColor = ConsoleColor.White;
         }
     }
 
 } while (guess != rando);
 
-Console.WriteLine("Congratulations, you guessed correctly!");
+Console.WriteLine("Congratulations, you guessed correctly and it only took " + count + " attempts!");
