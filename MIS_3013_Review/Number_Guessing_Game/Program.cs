@@ -5,11 +5,33 @@ Random r = new Random();
 	//input upper and lower bounds
 	Console.WriteLine("Please input lower bound value <<");
 	string answer = Console.ReadLine();
-	int lowerbound = int.Parse(answer);
+	int lowerbound = 0;
 
-	Console.WriteLine("Please input upper bound value <<");
+lowerbound = ValidateInput(answer, "Invalid input for lower bound, please try again <<");
+
+//try
+//{
+//	lowerbound = int.Parse(answer);
+//}
+//catch (FormatException ex)
+//{
+
+//    Console.WriteLine("Please enter a number not a string");
+//}
+//catch (OverflowException ex)
+//{
+//    Console.WriteLine("Your value exceeds the limits.");
+//}
+//catch (Exception ex)
+//{
+//    Console.WriteLine("I don't know what went wrong.");
+//}
+
+Console.WriteLine("Please input upper bound value <<");
 	answer = Console.ReadLine();
-	int upperbound = int.Parse(answer);
+	int upperbound = ValidateInput(answer, "Invalid input for upper bound, please try again <<");
+
+
 
 for (int i = 0; i < int.MaxValue; i++)
 {
@@ -28,7 +50,7 @@ for (int i = 0; i < int.MaxValue; i++)
 		Console.WriteLine("Please guess a number between " + lowerbound + " and " + upperbound + " << ");
 		string user_guess = Console.ReadLine();
 
-		guess = int.Parse(user_guess);
+		guess = ValidateInput(user_guess, "Invalid input for guess. Please try again <<");
 		count++;
 
 		Console.WriteLine("You guessed " + user_guess);
@@ -67,3 +89,18 @@ for (int i = 0; i < int.MaxValue; i++)
 }
 
 Console.WriteLine("Thank you for playing our game, come back soon!");
+
+
+
+///
+static int ValidateInput(string a, string msg = "Invalid input. Please try again <<")
+{
+    int result;
+    while (int.TryParse(a, out result) == false)
+    {
+        Console.WriteLine(msg);
+        a = Console.ReadLine();
+    }
+
+    return result;
+}
